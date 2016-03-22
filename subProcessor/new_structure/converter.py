@@ -1,10 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""
-convert ass to srt
-
-convert srt to lrc
-"""
 import re
 
 

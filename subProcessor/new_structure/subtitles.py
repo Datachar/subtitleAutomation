@@ -69,7 +69,7 @@ def sub_reader(file_path):
                 start = finish = None
             text = []
         elif '-->' in line:
-            start, finish = parse_time(line, file_path)
+            start, finish = parse_time(line)
         elif line:
             if file_path.find('.chs.srt') > 0 and len(text) == 0:
                 line = '|' + line
