@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from __future__ import division
 import sys
 import pprint
 import string
@@ -15,7 +18,7 @@ class LanguageDetector(object):
         last_letter = None
         for which in it_text:
             letter = which.lower()
-            if letter in string.letters:
+            if letter in string.letters+u'áéíóúñäëïöüàèìòùâêîôûãĩõũçßæ':
                 if letter not in frequencies:
                     frequencies[letter] = 0
                 frequencies[letter] += 1
