@@ -8,12 +8,12 @@ import StringIO
 import xmlrpclib
 import file_utils
 
+from hash import movie_hash
 from query import query_yn
 from format import format_movie_name, format_subtitle_output_file_name
-from hash import movie_hash
-from collections import namedtuple
 from langdet import LanguageDetector
 from time_utils import parse_time, parse_ms
+from collections import namedtuple
 from subProcessor.languages import english
 
 NAME = 'subdl'

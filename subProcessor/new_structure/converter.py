@@ -11,15 +11,12 @@ def convert_ass_to_srt(input_buffer):
         if line[:9] == "Dialogue:":
             input_buffer_srt.append("%d\n" % index)
             index += 1
-
             clean_line = re.sub("{.*?}", "", line)
             entries = clean_line[10:].strip().split(",")
-
             input_buffer_srt.append(
                 "%s --> %s\n" % (entries[1].replace(".", ",") + "0", entries[2].replace(".", ",") + "0"))
             input_buffer_srt.append("".join(entries[9:]).replace("\N", "\n") + "\n")
             input_buffer_srt.append("\n")
-
     return ''.join(input_buffer_srt)
 
 

@@ -5,11 +5,11 @@ import codecs
 import urllib2
 import chardet
 import hashlib
-from logging import getLogger
 
 from hash import my_hash
-from converter import byte2int, convert_ass_to_srt
+from logging import getLogger
 from lang_utils import srt_lang
+from converter import byte2int, convert_ass_to_srt
 
 blacklist = open('blacklist', 'r').readlines()
 
