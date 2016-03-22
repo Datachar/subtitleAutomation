@@ -5,14 +5,20 @@ def parse_time(str_time):
     pattern_time = r"(?P<h1>\d+):(?P<m1>\d+):(?P<s1>\d+),(?P<ms1>\d+)" \
                    r"\W*-->\W*(?P<h2>\d+):(?P<m2>\d+):(?P<s2>\d+),(?P<ms2>\d+)$"
     try:
-        d = re.match(pattern_time, str_time.strip()).groupdict()
+        match_result = re.match(pattern_time, str_time.strip()).groupdict()
     except AttributeError:
         return None, None
-    return get_ms(d['h1'], d['m1'], d['s1'], d['ms1']), get_ms(d['h2'], d['m2'], d['s2'], d['ms2'])
+    ms_1 = get_ms(match_result['h1'], match_result['m1'], match_result['s1'], match_result['ms1'])
+    ms_2 = get_ms(match_result['h2'], match_result['m2'], match_result['s2'], match_result['ms2'])
+    return ms_1, ms_2
 
 
-def get_ms(h, m, s, ms):
-    return (int(s) + int(m) * 60 + int(h) * 60 * 60) * 1000 + int(ms)
+def get_ms(hours, minutes, seconds, milliseconds):
+    return (int(seconds) + int(minutes) * 60 + int(hours) * 60 * 60) * 1000 + int(milliseconds)
+
+
+def parse_ms(start, finish):
+    return "%s --> %s" % (ms_to_string(start), ms_to_string(finish))
 
 
 def ms_to_string(ms, style=1):
@@ -25,7 +31,3 @@ def ms_to_string(ms, style=1):
         return "%02d:%02d:%02d,%03d" % (hh, mm, ss, ms_)
     if style is 2:
         return "%d:%d.%03d" % (mm + 60 * hh, ss, ms_)
-
-
-def parse_ms(start, finish):
-    return "%s --> %s" % (ms_to_string(start), ms_to_string(finish))
