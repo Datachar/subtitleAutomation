@@ -156,6 +156,7 @@ def lang(uchar):
     if u'a' <= uchar <= u'z':
         return 'eng'
 
+
 def convert_ass_to_srt(input_buffer):
     input_buffer_srt = []
     for index, line in enumerate(input_buffer.split("\n")):
